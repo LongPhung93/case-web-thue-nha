@@ -8,11 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class House extends Model
 {
     use HasFactory;
-    protected $table = "houses";
+    protected $table = 'houses';
 
-    public function image()
+    public function user()
     {
-        return $this->hasMany('App\Models\Image','house_id','id');
+        return $this->belongsTo('\App\Models\User','user_id','id');
     }
 
+    public function images()
+    {
+        return $this->hasMany('\App\Models\Image', 'house_id', 'id');
+    }
+
+    public function bills ()
+    {
+        return $this->hasMany('\App\Models\Bill', 'house_id', 'id');
+    }
 }

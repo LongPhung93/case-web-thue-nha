@@ -4,14 +4,14 @@
     <div class="top-header-area">
         <div class="h-100 d-md-flex justify-content-between align-items-center">
             <div class="email-address">
-                <a href="mailto:contact@southtemplate.com">contact@southtemplate.com</a>
+                <a href="mailto:longhaiphung@gmail.com">longhaiphung@gmail.com</a>
             </div>
             <div class="phone-number d-flex">
                 <div class="icon">
                     <img src="img/icons/phone-call.png" alt="">
                 </div>
                 <div class="number">
-                    <a href="tel:+45 677 8993000 223">+45 677 8993000 223</a>
+                    <a href="tel:+45 677 8993000 223">+84 392 797 611</a>
                 </div>
             </div>
         </div>
@@ -120,12 +120,21 @@
                                         Đăng nhập
                                     @endif
                                 </a>
+
+{{--                            @if (\Illuminate\Support\Facades\Auth::user()->is_admin == 1)--}}
+{{--                                <li>--}}
+{{--                                    <a href="{{ route('admin.index')}}">Quản trị</a>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
+
                                 @if (\Illuminate\Support\Facades\Auth::user())
                                     <ul class="dropdown">
                                         <li><a href="{{ route('login.logout') }}">Đăng xuất</a></li>
                                         <li>
-                                            <a href="{{ route('profile.show', \Illuminate\Support\Facades\Auth::user()->id) }}">Thông tin của bạn</a>
+{{--                                            <a href="{{ route('profile.show', \Illuminate\Support\Facades\Auth::user()->id) }}">Thông tin của bạn</a>--}}
                                         </li>
+
+
 
                                         @if (\Illuminate\Support\Facades\Auth::user()->role == 1)
                                             <li>
@@ -140,9 +149,9 @@
                                         @endif
 
 
-                                        {{-- <li>
-                                            <a href="{{ route('user.showListHouse', \Illuminate\Support\Facades\Auth::user()->id ) }}">Lịch sử đặt nhà</a>
-                                        </li> --}}
+{{--                                        --}}{{-- <li>--}}
+{{--                                            <a href="{{ route('user.showListHouse', \Illuminate\Support\Facades\Auth::user()->id ) }}">Lịch sử đặt nhà</a>--}}
+{{--                                        </li> --}}
 
                                     </ul>
                                 @endif

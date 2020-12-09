@@ -9,7 +9,9 @@ class FrontendController extends Controller
 {
     public function show()
     {
-        $houses = House::orderby('id','DESC')->paginate(6);
+//        $houses = House::paginate(10);
+
+        $houses = House::orderBy('id','DESC')->paginate(10);
         return view('index',compact('houses'));
     }
 }
