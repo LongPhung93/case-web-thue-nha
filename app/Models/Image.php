@@ -10,8 +10,8 @@ class Image extends Model
     use HasFactory;
     protected $table = 'images';
 
-    public function ()
+    public function house()
     {
-        return $this->belongsTo('App\Models\House','house_id','id');
+        return $this->belongsTo('\App\Models\House','house_id','id');
     }
 }

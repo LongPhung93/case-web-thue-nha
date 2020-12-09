@@ -8,9 +8,14 @@
                 <div class="col-md-4 offset-md-4">
                     <div class="form-login">
                         <h2 class="text-center">Đăng nhập</h2>
-                        @if ($errors->any())
+{{--                        @if ($errors->any())--}}
+{{--                            <div class="alert alert-danger">--}}
+{{--                                <strong>Email hoặc password của bạn không đúng!</strong>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+                        @if($errors->any())
                             <div class="alert alert-danger">
-                                <strong>Email hoặc password của bạn không đúng!</strong>
+                                <strong>Email hoặc password của bạn không đúng</strong>
                             </div>
                         @endif
                         <form action="" method="POST" autocomplete="off">

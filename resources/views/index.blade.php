@@ -1,18 +1,17 @@
 @extends('frontend.master.master')
 @section('content')
     @include('frontend.master.slider')
-
     <div class="south-search-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="advanced-search-form">
                         <!-- Search Title -->
-                        <div class="search-title">
-                            <p>Search for your home</p>
-                        </div>
+{{--                        <div class="search-title">--}}
+{{--                            <p>Search for your home</p>--}}
+{{--                        </div>--}}
                         <!-- Search Form -->
-                        <form action="/search" method="POST" id="advanceSearch">
+                        <form action="{{route('house.search')}}" method="POST" id="advanceSearch">
                             @csrf
                             <div class="row">
 
@@ -93,7 +92,6 @@
                 <div class="col-12">
                     <div class="section-heading wow fadeInUp">
                         <h2>Danh sách nhà</h2>
-                        <p>Suspendisse dictum enim sit amet libero malesuada feugiat.</p>
                     </div>
                 </div>
             </div>
@@ -107,13 +105,15 @@
                         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                             <!-- Property Thumbnail -->
 
-
+{{--            @dd($house)--}}
                             <div class="property-thumb">
                                 <a href="{{ route('house.detail', $house->id) }}">
+                                    @if(!empty($house->images()->first()))
                                     <img
                                         src="{{asset('storage/'.$house->images()->first()->image)}}"
-                                        class="img-fluid"
+                                        class="img-fluid" style="width:1024px;height:200px;"
                                     >
+                                    @endif
                                 </a>
 
 
@@ -126,7 +126,7 @@
                             </div>
                             <!-- Property Content -->
                             <div class="property-content">
-                                <a href="{{ route('house.detail', $house->id) }}">
+{{--                                <a href="{{ route('house.detail', $house->id) }}">--}}
                                     <h5>{{ $house->name }}</h5>
                                 </a>
 
@@ -157,17 +157,12 @@
                         <p class="text-center">Không tìm thấy kết quả nào phù hợp với yêu cầu của bạn!</p>
                     </div>
                 @endforelse
-
-
-
-
-
-
-
+{{--                {{ $houses->appends(request()->query()) }}--}}
             </div>
             <div class="row">
                 <div class="col-md-12 box-paginate">
-                    {{-- {{ $houses->links() }} --}}
+{{--                     {{ $houses->links() }}--}}
+{{--                    {{ $houses->appends(request()->query()) }}--}}
                 </div>
             </div>
         </div>
@@ -179,9 +174,9 @@
             <div class="row align-items-center h-100">
                 <div class="col-12">
                     <div class="cta-content text-center">
-                        <h2 class="wow fadeInUp" data-wow-delay="300ms">Are you looking for a place to rent?</h2>
-                        <h6 class="wow fadeInUp" data-wow-delay="400ms">Suspendisse dictum enim sit amet libero malesuada feugiat.</h6>
-                        <a href="#" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">Search</a>
+                        <h2 class="wow fadeInUp" data-wow-delay="300ms">Bạn muốn tìm kiếm một ngôi nhà mơ ước Hãy đến với chúng tôi !</h2>
+{{--                        <h6 class="wow fadeInUp" data-wow-delay="400ms">Suspendisse dictum enim sit amet libero malesuada feugiat.</h6>--}}
+{{--                        <a href="" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">Search</a>--}}
                     </div>
                 </div>
             </div>
@@ -196,8 +191,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading wow fadeInUp" data-wow-delay="250ms">
-                        <h2>Client testimonials</h2>
-                        <p>Suspendisse dictum enim sit amet libero malesuada feugiat.</p>
+                        <h2>Cảm nhận khách hàng</h2>
+{{--                        <p>Suspendisse dictum enim sit amet libero malesuada feugiat.</p>--}}
                     </div>
                 </div>
             </div>
@@ -208,34 +203,34 @@
 
                         <!-- Single Testimonial Slide -->
                         <div class="single-testimonial-slide text-center">
-                            <h5>Perfect Home for me</h5>
-                            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna.</p>
+                            <h5>Ngôi nhà tuyệt vời cho tôi</h5>
+                            <p>Giá cả hợp lý, tiện nghi, giao thông rất thuận tiện. Vote 5 sao</p>
 
                             <div class="testimonial-author-info">
-                                <img src="img/bg-img/feature6.jpg" alt="">
-                                <p>Daiane Smith, <span>Customer</span></p>
+                                <img src="img/bg-img/ngoctrinh.jpeg" alt="">
+                                <p>Ngọc Trinh, <span>Khách hàng</span></p>
                             </div>
                         </div>
 
                         <!-- Single Testimonial Slide -->
                         <div class="single-testimonial-slide text-center">
-                            <h5>Perfect Home for me</h5>
-                            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna.</p>
+                            <h5>Tiện nghi, hiện đại</h5>
+                            <p>Rất đáng đồng tiền bát gạo. Trên cả tuyệt vời, ngôi nhà rất nhiều tiện nghi, giá cả hợp lý, kèm với đó là những dịch vụ đẳng cấp phù hợp với người bận rộn như tôi</p>
 
                             <div class="testimonial-author-info">
-                                <img src="img/bg-img/feature6.jpg" alt="">
-                                <p>Daiane Smith, <span>Customer</span></p>
+                                <img src="img/bg-img/chipu.jpg" alt="">
+                                <p>Chi Pu, <span>Khách hàng</span></p>
                             </div>
                         </div>
 
                         <!-- Single Testimonial Slide -->
                         <div class="single-testimonial-slide text-center">
-                            <h5>Perfect Home for me</h5>
-                            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna.</p>
+                            <h5>Amazing, gút chóp</h5>
+                            <p>Mới đầu tôi cứ nghĩ ngôi nhà work không tốt lắm, tuy vậy thực tế lại work rất tốt với nhau. Không biết nói gì hơn, chúc mừng các bạn đã làm rất tốt!</p>
 
                             <div class="testimonial-author-info">
-                                <img src="img/bg-img/feature6.jpg" alt="">
-                                <p>Daiane Smith, <span>Customer</span></p>
+                                <img src="img/bg-img/binz.jpeg" alt="">
+                                <p>BinZ, <span>Khách hàng</span></p>
                             </div>
                         </div>
                     </div>

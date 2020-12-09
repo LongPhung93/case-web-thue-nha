@@ -37,6 +37,6 @@ class LoginRequest extends FormRequest
             'email.email'=>'Cần nhập đúng định dạng email, ví dụ abc@gmail.com',
             'password.required'=>'Mật khẩu không được để trống',
             'password.min'=>'Mật khẩu có ít nhất 6 ký tự'
-        ]
+        ];
     }
 }
